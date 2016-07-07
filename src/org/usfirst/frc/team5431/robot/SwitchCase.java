@@ -638,7 +638,7 @@ public class SwitchCase {
 				Robot.drivebase.disablePIDC();
 				//SmartDashboard.putString("CALLEDMAN", "YES");
 				int flySpeed = cameraVision.getSpeed();
-				final int[] speedsPIDC = { 2950, 2950 };
+				final int[] speedsPIDC = { 3000, 3000 };
 				Robot.flywheels.setPIDSpeed(speedsPIDC);
 				currAIM = SwitchCase.autoAim(currAIM, 2950);
 				if ((currAIM == 0 || currAIM == -1) && !SwitchCase.shotTheBall) {
@@ -666,10 +666,22 @@ public class SwitchCase {
 				Robot.flywheels.setIntakeSpeed(0.0);
 				Robot.flywheels.setPIDSpeed(off);
 				Robot.drivebase.disablePIDC();
-				state = 5;
+				state = 7;
 			} 
 			break;
-		case 5://Dead state
+//		case 5:
+//			Robot.drivebase.disablePIDC();
+//			Robot.drivebase.enablePIDCDrive(0.68, 0.1);
+//			state=6;
+//		break;
+//		case 6:
+//			driveDistance = Robot.drivebase.getEncDistance();
+//			if ((driveDistance[0] < -(distance/2) || driveDistance[1] < -(distance/2)))
+//			{
+//				state=7;
+//			}
+//		break; 
+		case 7://Dead state
 			//SmartDashboard.putBoolean("isMoving", Robot.drivebase.ahrs.isMoving());
 			//SmartDashboard.putBoolean("isRotating", Robot.drivebase.ahrs.isRotating());
 			//SmartDashboard.putBoolean("OnTarget", Robot.drivebase.driveController.onTarget());
@@ -766,7 +778,18 @@ public class SwitchCase {
 				state = 5;
 			} 
 			break;
-		case 5://Dead state
+		case 5:
+				Robot.drivebase.enablePIDCTurn(-angle);
+				
+				FlyWheelTimer = System.currentTimeMillis() + 3000;
+					state = 6;
+			break;
+		case 6:
+			if(System.currentTimeMillis() >= FlyWheelTimer) {
+			state=7;
+			}
+			break;
+		case 7://Dead state
 			//SmartDashboard.putBoolean("isMoving", Robot.drivebase.ahrs.isMoving());
 			//SmartDashboard.putBoolean("isRotating", Robot.drivebase.ahrs.isRotating());
 			//SmartDashboard.putBoolean("OnTarget", Robot.drivebase.driveController.onTarget());
