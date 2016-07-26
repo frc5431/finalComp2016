@@ -44,7 +44,7 @@ public class driveBase {
 	static final double turn_kToleranceDegrees = 0.5f;
 	
 	static final double aim_kP = 0.0;//0.018;
-	static final double aim_kI = 0.0235;//00005
+	static final double aim_kI = 0.0225;//00005
 	static final double aim_kD = 0.061945;
 	static final double aim_kF = 0.0001;
 	final double aim_kTolerancePixels = 2;

@@ -600,7 +600,7 @@ public class SwitchCase {
 			//SmartDashboard.putBoolean("OnTarget", Robot.drivebase.driveController.onTarget());
 			//SmartDashboard.putNumber("GetError", Robot.drivebase.driveController.getError());
 			//SmartDashboard.putNumber("GetAvgError", Robot.drivebase.driveController.getAvgError());
-			Robot.drivebase.enablePIDCDrive(-0.68, 0.1);
+			Robot.drivebase.enablePIDCDrive(-0.69, 0.1);
 			state = -1;
 			break;
 		case -1:
@@ -717,7 +717,7 @@ public class SwitchCase {
 			// Robot.drivebase.driveController.getError());
 			// SmartDashboard.putNumber("GetAvgError",
 			// Robot.drivebase.driveController.getAvgError());
-			Robot.drivebase.enablePIDCDrive(-0.68, 0.1);
+			Robot.drivebase.enablePIDCDrive(-0.68, 0.15);
 			state = -1;
 			break;
 		case -1:
@@ -736,7 +736,7 @@ public class SwitchCase {
 			break;
 		case -2:
 			// Start autoAim. Nothing else.
-			currAIM = SwitchCase.autoAim(11, 3310);
+			currAIM = SwitchCase.autoAim(11, 3200);
 			state = 2;
 			break;
 		case 2:
@@ -751,7 +751,7 @@ public class SwitchCase {
 				final int[] speedsPIDC = { flySpeed, flySpeed };
 				Robot.flywheels.setPIDSpeed(speedsPIDC);
 				// SmartDashboard.putString("CALLEDMAN", "YES");
-				currAIM = SwitchCase.autoAim(currAIM, 3310);
+				currAIM = SwitchCase.autoAim(currAIM, 3200);
 				if ((currAIM == 0 || currAIM == -1) && !SwitchCase.shotTheBall) {
 					currAIM = 13;
 					// SmartDashboard.putString("CALLEDMAN", "RESET");
